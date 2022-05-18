@@ -22,7 +22,7 @@ class App
     }
 
     protected function runController() {
-        $this->controller = $this->request->getControllerName() ?: 'index';
+        $this->controller = $this->request->getControllerName() ?: 'subject';
         $this->action = $this->request->getActionName();
         $controllerClass = $this->config['controllers_namespaces'] . ucfirst($this->controller) . "Controller";
         if (class_exists($controllerClass)) {
