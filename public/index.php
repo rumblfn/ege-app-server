@@ -5,6 +5,8 @@ use app\engine\App;
 $config = include "../config/config.php";
 require_once '../vendor/autoload.php';
 
+header("Access-Control-Allow-Origin: *");
+
 try {
     App::call()->run($config);
 } catch (PDOException $exception) {
