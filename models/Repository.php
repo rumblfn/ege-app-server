@@ -14,7 +14,14 @@ abstract class Repository implements IRepository
         $tableName = $this->getTableName();
         $params[":" . $name] = $value;
         $sql = "SELECT * FROM `{$tableName}` where $name = :$name";
-        return App::call()->db->queryOneObject($sql, [':login' => $value], $this->getEntityClass());
+        return App::call()->db->queryOneObject($sql, [$name => $value], $this->getEntityClass());
+    }
+
+    public function getAllWhere($name, $value) {
+        $tableName = $this->getTableName();
+        $params[":" . $name] = $value;
+        $sql = "SELECT * FROM `{$tableName}` where $name = :$name";
+        return App::call()->db->queryAll($sql, [$name => $value], $this->getEntityClass());
     }
 
     public function getCountWhere($name, $value)

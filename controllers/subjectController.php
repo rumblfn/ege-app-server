@@ -15,6 +15,13 @@ class SubjectController extends Controller
         echo json_encode($answer, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
+    public function actionGetTasksInfo()
+    {
+        $subject_id = App::call()->request->getParams()['subject_id'];
+        $subjectTasksInfo = App::call()->subjectTasksInfoRepository->getAllWhere('subject_id', intval($subject_id));
+        echo json_encode($subjectTasksInfo, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
     public function actionGetSubjects()
     {
         $subjects = App::call()->subjectRepository->getAll();

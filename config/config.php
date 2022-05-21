@@ -3,6 +3,7 @@
 use app\engine\Db;
 use app\engine\Request;
 use app\models\repositories\SubjectRepository;
+use app\models\repositories\SubjectTasksInfoRepository;
 
 return [
     'root' => dirname(__DIR__),
@@ -22,6 +23,9 @@ return [
         ],
         'subjectRepository' => [
             'class' => SubjectRepository::class
+        ],
+        'subjectTasksInfoRepository' => [
+            'class' => SubjectTasksInfoRepository::class
         ]
     ]
 ];
