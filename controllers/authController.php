@@ -25,7 +25,14 @@ class AuthController extends Controller
             "status" => false
         ];
         if (App::call()->userRepository->Auth($login, $pass)) {
-            $answer["status"] = true;
+            $user = App::call()->userRepository->getWhere('login', $login);
+            $answer = [
+                "status" => true,
+                "login" => $user->login,
+                "statusUser" => $user->status,
+                "email" => $user->email,
+                "karma" => $user->karma,
+            ];
         }
         echo json_encode($answer, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
