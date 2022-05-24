@@ -31,14 +31,17 @@ abstract class Repository implements IRepository
         return App::call()->db->queryOne($sql, ['value' => $value])['count'];
     }
 
-    public function insert(Model $entity): Model
+    public function insert(Model $entity)
     {
         $tableName = $this->getTableName();
 
         if ($tableName == 'users') {
             $user = App::call()->userRepository->getWhere('login', $entity->login);
             if ($user) {
-                die('пользователь с таким логином уже существует');
+                return [
+                    "status" => false,
+                    "msg" => "login exist"
+                ];
             }
         }
 
@@ -61,6 +64,13 @@ abstract class Repository implements IRepository
         $sql = "INSERT INTO `{$tableName}`($columns) VALUES ($values)";
         App::call()->db->execute($sql, $params);
         $entity->id = App::call()->db->lastInsertId();
+
+        if ($tableName == 'users') {
+            return [
+                "status" => true,
+                "msg" => "success"
+            ];
+        }
         return $entity;
     }
 
