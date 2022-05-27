@@ -16,7 +16,7 @@ abstract class Model
         return null;
     }
 
-    public function __get($name)
+    public function &__get($name)
     {
         if (array_key_exists($name, $this->props) || $name == 'props' || $name == 'id') {
             return $this->$name;

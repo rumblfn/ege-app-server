@@ -13,6 +13,10 @@ class User extends Model
     protected $status;
     protected $email;
     protected $karma;
+    protected $profileImg;
+    protected $profileBannerImg;
+    protected $verification_code;
+    protected $verification_time;
 
     protected $props = [
         'status' => false,
@@ -20,6 +24,10 @@ class User extends Model
         'karma' => false,
         'login' => false,
         'password' => false,
+        'profileImg' => false,
+        'profileBannerImg' => false,
+        'verification_code' => false,
+        'verification_time' => false
     ];
 
 

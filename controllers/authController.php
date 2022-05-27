@@ -27,11 +27,13 @@ class AuthController extends Controller
         if (App::call()->userRepository->Auth($login, $pass)) {
             $user = App::call()->userRepository->getWhere('login', $login);
             $answer = [
-                "status" => true,
+                "status" => $user->status,
                 "login" => $user->login,
-                "statusUser" => $user->status,
+                "statusUser" => true,
                 "email" => $user->email,
                 "karma" => $user->karma,
+                "profileImg" => $user->profileImg,
+                "profileBannerImg" => $user->profileBannerImg,
             ];
         }
         echo json_encode($answer, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

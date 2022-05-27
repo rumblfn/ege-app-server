@@ -27,4 +27,5 @@ class SubjectController extends Controller
         $subjects = App::call()->subjectRepository->getAll();
         echo json_encode($subjects, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
+    
 }

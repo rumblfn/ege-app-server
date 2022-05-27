@@ -84,7 +84,6 @@ abstract class Repository implements IRepository
             if ($value) {
                 $params[":" . $key] = $entity->$key;
                 $sql .= "`$key` = :$key, ";
-
                 $entity->props[$key] = false;
             }
         }
