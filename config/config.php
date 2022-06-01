@@ -5,6 +5,7 @@ use app\engine\Request;
 use app\models\repositories\SubjectRepository;
 use app\models\repositories\SubjectTasksInfoRepository;
 use app\models\repositories\UserRepository;
+use app\models\repositories\ArticleRepository;
 
 return [
     'root' => dirname(__DIR__),
@@ -31,5 +32,8 @@ return [
         'userRepository' => [
             'class' => UserRepository::class
         ],
+        'articleRepository' => [
+            'class' => ArticleRepository::class
+        ]
     ]
 ];
